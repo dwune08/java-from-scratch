@@ -1,0 +1,12 @@
+# IntelliJ IDEA 설정 파일
+.idea/
+*.iml
+out/
+gen/
+
+# 컴파일된 클래스 파일
+*.class
+
+# 기타 임시 파일
+*.log
+*.tmp
