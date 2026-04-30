@@ -5,7 +5,6 @@ package exam_int;
    변수 b에 기억된 값은 1 감소시켜서 출력하는 프로그램을 작성하시오.
 */
 
-
 import java.util.Scanner;
 
 
@@ -23,10 +22,10 @@ public class IntExample2 {
         System.out.print("b = ");
         b = input.nextInt();
 
-        a = a + 1;
-        b = b - 1;
+        a += 1;
+        b -= 1;
 
-        System.out.println("두 수의 상태가?!");
+        System.out.println("\n두 수의 상태가?!");
         System.out.println("a = " + a + "\nb = "+ b);
 
         input.close();
