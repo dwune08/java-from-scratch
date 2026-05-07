@@ -13,15 +13,20 @@ import java.util.Scanner;
 public class OperationExample {
     public static void main(String[] args) {
         double result;
+        char ch;
+
         Scanner input = new Scanner(System.in);
 
         System.out.println("*** 계산기 프로그램 입니다. ***");
+
+        do {
+            System.out.println("연산자를 입력해주세요.(+,-,*,/)");
+            ch = input.next().charAt(0);
+        } while(ch!='+' && ch!='-' && ch!='*' && ch!='/');
+
         System.out.println("두 수를 입력해주세요.");
         double x = input.nextInt();
         double y = input.nextInt();
-
-        System.out.println("연산자를 입력해주세요.(+,-,*,/)");
-        char ch = input.next().charAt(0);
 
         switch(ch) {
             case '+' -> result = x+y;
