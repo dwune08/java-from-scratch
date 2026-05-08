@@ -13,9 +13,9 @@ public class RandomExample1 {
         int sum = 0;
 
         for(int i = 1; i <= 50; i++) { // 50개의 난수를 위해 50번 반복
-            int k = (int) (Math.random() * 100) + 1; //Math.random()을 사용해 1~100 사이의 난수를 생성
-            sum += k;
-            System.out.print(k + " ");
+            int randomNum = (int) (Math.random() * 100) + 1; //Math.random()을 사용해 1~100 사이의 난수를 생성
+            sum += randomNum;
+            System.out.print(randomNum + " ");
             if(i%6==0) System.out.println(); // 6줄마다 내려쓰기 하기 위해 i가 6의 배수일 때 println이 실행되도록 한다.
         }
         System.out.println("\n합계 : " + sum);

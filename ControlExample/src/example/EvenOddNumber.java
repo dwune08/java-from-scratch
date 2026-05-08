@@ -26,9 +26,9 @@ public class EvenOddNumber {
             num2 = temp;
         } // 입력받은 두 수의 크기를 비교해 num1에 작은 수를, num2에 큰 수를 넣어준다.
 
-        for(int k = num1; k <= num2; k++) { // num1 부터 num2까지 k를 1씩 증가시키며 반복
-            if(k % 2 == 0) evenSum += k; // k가 짝수인 경우 evenSum에 더해준다.
-            else oddSum += k;            // K가 홀수인 경우 oddSum에 더해준다.
+        for(int i = num1; i <= num2; i++) { // num1 부터 num2까지 k를 1씩 증가시키며 반복
+            if(i % 2 == 0) evenSum += i; // k가 짝수인 경우 evenSum에 더해준다.
+            else oddSum += i;            // K가 홀수인 경우 oddSum에 더해준다.
         }
 
         System.out.println(num1 + "부터 " + num2 +"까지의 홀수의 합: " + oddSum);

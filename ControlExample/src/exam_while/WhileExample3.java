@@ -14,10 +14,10 @@ public class WhileExample3 {
         Scanner input = new Scanner(System.in);
 
         System.out.println("입력받은 값부터 1까지 역순으로 출력하는 프로그램입니다.");
-        System.out.print("1보다 큰 정수를 입려해주세요. ");
+        System.out.print("1보다 큰 정수를 입력해주세요. ");
         while((i = input.nextInt()) < 1) {
-            System.out.println("잘못 입력하셨습니다. 다시 입력해주세요. ");
-            System.out.print("1보다 큰 정수를 입려해주세요. ");
+            System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
+            System.out.print("1보다 큰 정수를 입력해주세요. ");
         }
         while(i >= 1) {
             System.out.print(i-- + " ");

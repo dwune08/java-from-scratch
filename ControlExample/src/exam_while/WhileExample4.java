@@ -7,28 +7,25 @@ import java.util.Scanner;
 
 public class WhileExample4 {
     public static void main(String[] args) {
-        int i, j;
+        int num1, num2;
         Scanner input = new Scanner(System.in);
 
-        System.out.print("첫 번째 숫자 : ");
-        i = input.nextInt();
-        System.out.print("두 번째 숫자 : ");
-        j = input.nextInt();
-
-        while((i<1)||(j<1)){
-            System.out.println("1 이상의 숫자를 입력해주세요.");
+        while(true){
             System.out.print("첫 번째 숫자 : ");
-            i = input.nextInt();
+            num1 = input.nextInt();
             System.out.print("두 번째 숫자 : ");
-            j = input.nextInt();
+            num2 = input.nextInt();
+
+            if((num1 >= 1)&&(num2 >= 1)) break;
+            else System.out.println("1 이상의 숫자를 입력해주세요.");
         }
-        if(i > j) { // i를 작은 수, j를 큰수로 재배치.
-            int temp = i;
-            i = j;
-            j = temp;
+        if(num1 > num2) { // num1를 작은 수, num2를 큰수로 재배치.
+            int temp = num1;
+            num1 = num2;
+            num2 = temp;
         }
-        while(i <= j) { // i를 1씩 증가시키며 j와 같아질 때까지 반복 수행
-            System.out.print(i++ + " ");
+        while(num1 <= num2) { // num1를 1씩 증가시키며 num2와 같아질 때까지 반복 수행
+            System.out.print(num1++ + " ");
         }
         input.close();
     }

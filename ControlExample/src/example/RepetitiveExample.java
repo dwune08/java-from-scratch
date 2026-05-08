@@ -20,10 +20,8 @@ import java.util.Scanner;
  * 선택>>
  * 1
  * 사칙연산을 할 두 수를 입력하세요:1 4
- * 1 + 4 = 5
- *
- *
- */
+ * 1 + 4 = 5  */
+
 public class RepetitiveExample {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -40,16 +38,21 @@ public class RepetitiveExample {
                 int num1 = input.nextInt();
                 int num2 = input.nextInt();
 
+                if(operator == 4 && num2 == 0) {
+                    System.out.println("분모는 0이 될 수 없습니다.");
+                    continue; // 나눗셈인데 분모가 0인 경우 다시 돌아가기
+                }
+
                 switch(operator) {
                     case 1 -> System.out.printf("%d + %d = %d\n", num1, num2, num1+num2);
                     case 2 -> System.out.printf("%d - %d = %d\n", num1, num2, num1-num2);
                     case 3 -> System.out.printf("%d * %d = %d\n", num1, num2, num1*num2);
                     case 4 -> System.out.printf("%d / %d = %.1f\n", num1, num2, (double)num1/num2);
                     // 나누셈의 경우 소수 1자리까지 출력.
-                    // 분모가 0인 경우는 출력예시에 없어서 생략.
                 }
             }
         } while(operator != 5); // 5가 입력된 경우 종료
+
         System.out.println("프로그램을 종료합니다.");
         input.close();
     }

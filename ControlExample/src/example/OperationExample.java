@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class OperationExample {
     public static void main(String[] args) {
-        double result;
+        int result = 0;
         char ch;
 
         Scanner input = new Scanner(System.in);
@@ -23,30 +23,29 @@ public class OperationExample {
             System.out.println("연산자를 입력해주세요.(+,-,*,/)");
             ch = input.next().charAt(0);
         } while(ch!='+' && ch!='-' && ch!='*' && ch!='/');
+        // 잘못된 연산자를 입력한 경우 다시 입력받음
 
         System.out.println("두 수를 입력해주세요.");
-        double x = input.nextInt();
-        double y = input.nextInt();
+        int x = input.nextInt();
+        int y = input.nextInt();
 
-        switch(ch) {
+        switch(ch) { // 연산자 별로 결과를 result에 저장
             case '+' -> result = x+y;
             case '-' -> result = x-y;
             case '*' -> result = x*y;
             case '/' -> {
-                if(y ==0) {
-                    System.out.println("분모가 0이 되어 계산할 수 없습니다.");
-                    return;
-                } else {
-                    result = x / y;
+                if(y ==0) { // 분모가 0인 경우 처리
+                    System.out.println("분모는 0이 될 수 없습니다.");
+                } else { // 나누기의 경우 결과가 실수로 나올 수 있어 따로 출력
+                    System.out.println("계산 결과는");
+                    System.out.println(x + " " + ch + " " + y +" = " + (double)x/y);
                 }
-            }
-            default -> {
-                System.out.println("잘못 입력하셨습니다.");
-                return;
+                return; // 뒤에 출력문이 다시 나오지 않도록 return 처리
             }
         }
         System.out.println("계산 결과는");
-        System.out.println(x + " " + ch + " " + y +" = " + result);
+        System.out.println(x + " " + ch + " " + y + " = " + result);
+
         input.close();
     }
 }
