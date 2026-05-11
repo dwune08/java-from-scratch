@@ -12,6 +12,9 @@ public class ArrayExample1 {
         System.out.println("numbers[1] = " + numbers[1]);
         System.out.println("numbers[2] = " + numbers[2]);
         System.out.println();
+        for(int i : numbers) {
+            System.out.println(i);
+        }
 
         double[] arrayDouble = new double[2];
         for(int i = 0; i < 2; i++) {
@@ -26,8 +29,8 @@ public class ArrayExample1 {
 
         //String[] arrayString = new String[]{"java", "orcle", "springboot"};
 
-        for(int i = 0; i < 3; i++) {
-            System.out.println("arrayString[" + i + "] = " + arrayString[i]);
+        for(String s : arrayString) {
+            System.out.println(s);
         }
     }
 }

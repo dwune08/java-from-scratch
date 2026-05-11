@@ -2,7 +2,7 @@ package exam_array;
 import java.util.Scanner;
 
 /* 학생 수를 입력 받고, 그 수(학생수)만큼 점수를 입력받아
- * 평균을 구하도록 프로그램을 작성하여 보자.  */
+   평균을 구하도록 프로그램을 작성하여 보자.  */
 
 public class ScoreTest {
     public static void main(String[] args) {
