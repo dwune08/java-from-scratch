@@ -10,10 +10,10 @@ public class ArrayExample1 {
         String numbers = input.nextLine();
         String[] array = numbers.split(" ");
         for (String s : array) {
-            num[Integer.parseInt(s) - 1]++;
+            num[Integer.parseInt(s) - 1]++; // 입력받은 수들을 인덱스로 사용하여 배열에 집계
         }
         for(int i = 0; i < num.length; i++) {
-            System.out.println((i+1) + "의 개수 : " + num[i]);
+            System.out.println((i+1) + "의 개수 : " + num[i]); // 출력
         }
         input.close();
     }
