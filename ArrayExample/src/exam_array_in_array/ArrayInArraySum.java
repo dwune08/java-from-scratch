@@ -7,7 +7,6 @@ public class ArrayInArraySum {
                                     {40, 40, 40, 40, 0},
                                     {50, 50, 50, 50, 0},
                                     {0, 0, 0, 0, 0},};
-        int rowSum = 0, colSum = 0, diagSum = 0;
 
         System.out.println("======== 실행 전 ========");
         for(int i = 0; i < array.length; i++) {
