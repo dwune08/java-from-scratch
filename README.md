@@ -1,1 +1,1 @@
-자바 공부 기록 저장
+Daily Java study record
