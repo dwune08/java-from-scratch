@@ -4,9 +4,6 @@ public class Car {
     private String color;
     private int account;
 
-    public Car() {
-    }
-
     public Car(String color, int account) {
         this.color = color;
         this.account = account;
