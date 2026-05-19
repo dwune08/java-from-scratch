@@ -10,6 +10,7 @@ public class Monata extends Car {
         this.use = use;
     }
 
+    @Override
     public String toString() {
         return super.toString() + "\t[용도] " + use + "\t\t[시리즈] " + series;
     }
