@@ -1,5 +1,7 @@
 package exam_interface_example;
 
+import java.util.Arrays;
+
 public class MusicCDInfo extends CDInfo{
     private String artist;
     private String[] songTitle;
@@ -28,6 +30,6 @@ public class MusicCDInfo extends CDInfo{
 
     public String showCDInfo() {
 
-        return artist + " "+super.getTitle() + songTitle +  "음반.";
+        return artist + " "+super.getTitle() + Arrays.toString(songTitle) +  "음반.\n";
     }
 }

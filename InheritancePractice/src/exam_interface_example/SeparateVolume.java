@@ -4,7 +4,7 @@ public class SeparateVolume implements Lendable {
     private int requestNo;
     private String bookTitle;
     private String writer;
-    private String borrorwer;
+    private String borrower;
     private String checkOutDate;
     private String state = "대출 가능";
 
@@ -16,7 +16,7 @@ public class SeparateVolume implements Lendable {
 
     @Override
     public void checkOut(String borrower, String date) {
-        this.borrorwer = borrower;
+        this.borrower = borrower;
         this.checkOutDate = date;
         // 실제 대출 코드
         System.out.println("=== 도서 대출 ===");
@@ -58,8 +58,8 @@ public class SeparateVolume implements Lendable {
         this.writer = writer;
     }
 
-    public String getBorrorwer() {
-        return borrorwer;
+    public String getBorrower() {
+        return borrower;
     }
 
     public String getCheckOutDate() {
@@ -71,6 +71,6 @@ public class SeparateVolume implements Lendable {
     }
 
     public String showBookInfo() {
-        return "청구 번호 = " +requestNo+ ", 도서명 = " +bookTitle+ ", 저자 = " +writer+ ", 대출자 = " +borrorwer+ ", 대출일 = " +checkOutDate+ ", 상태 = " + state;
+        return "청구 번호 = " +requestNo+ ", 도서명 = " +bookTitle+ ", 저자 = " +writer+ ", 대출자 = " + borrower + ", 대출일 = " +checkOutDate+ ", 상태 = " + state + "\n";
     }
 }

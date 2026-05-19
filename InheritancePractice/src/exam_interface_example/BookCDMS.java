@@ -6,9 +6,16 @@ public class BookCDMS {
         book1.checkOut("홍길동", "2026-05-19");
         System.out.println(book1.showBookInfo());
 
-        MusicCDInfo musicCD1 = new MusicCDInfo(???, "동행", "")
+        String[] a = {"고백", "청춘", "내 사람"};
+        MusicCDInfo musicCD1 = new MusicCDInfo("CD","동행","김동률", new String[]{"고백", "청춘", "내 사람"});
         System.out.println("=== 음악 CD 정보 ===");
+        System.out.println(musicCD1.showCDInfo());
 
+        AppCDInfo cd1 = new AppCDInfo("CD002", "자바 학습 프로그램");
+        cd1.checkOut("김철수", "2026-05-19");
+        System.out.println(cd1.showCDInfo());
 
+        book1.checkIn(); // 책 반납
+        cd1.checkIn(); // cd 반납
     }
 }
