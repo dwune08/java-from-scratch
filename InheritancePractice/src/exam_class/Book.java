@@ -51,6 +51,4 @@ public class Book {
     public String toString() {
         return title+" (총페이지 수: " + pages + ")\n" + jakga.toString() +" / " + choolpan.toString();
     }
-
-
 }
