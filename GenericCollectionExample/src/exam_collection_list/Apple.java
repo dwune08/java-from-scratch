@@ -1,4 +1,4 @@
-package exam_collction_list;
+package exam_collection_list;
 
 public class Apple {
     private String kind;

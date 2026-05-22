@@ -1,6 +1,7 @@
-package exam_collction_list;
+package exam_collection_list;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ArrayListTest {
     public static void main(String[] args) {
@@ -46,8 +47,11 @@ public class ArrayListTest {
 
         // 정수값을 저장하도록 인스턴스 생성
         ArrayList<Integer> list1 = new ArrayList<Integer>();
+
+
         list1.add(23);
         list1.add(94);
+
         list1.add(Integer.valueOf(62));
         list1.add(Integer.valueOf(45));
 
@@ -93,14 +97,24 @@ public class ArrayListTest {
         System.out.println();
 
         ArrayList<Movie> movie = new ArrayList<Movie>();
-        movie.add(new Movie("친절한 금자씨", 7.61, "박찬욱", 2005));
-        movie.add(new Movie("싸이보그지만 괜찮아", 5.17, "박찬욱", 2006));
-        movie.add(new Movie("박쥐", 8.63, "박찬욱", 2009));
-        movie.add(new Movie("아가씨", 7.69, "박찬욱", 2016));
-        movie.add(new Movie("헤어질 결심", 8.97, "박찬욱", 2022));
+        movie.add(new Movie("친절한 금자씨", "7.61", "박찬욱", "2005"));
+        movie.add(new Movie("싸이보그지만 괜찮아", "5.17", "박찬욱", "2006"));
+        movie.add(new Movie("박쥐", "8.63", "박찬욱", "2009"));
+        movie.add(new Movie("아가씨", "7.69", "박찬욱", "2016"));
+        movie.add(new Movie("헤어질 결심", "8.97", "박찬욱", "2022"));
 
         for(Movie m : movie) System.out.println(m.toString());
 
 
+        ArrayList<Integer> list4 = new ArrayList<>();
+        list4.add(10);
+        list4.add(20);
+        System.out.println(list4);
+       // int max = Collections.max(list4);
+        //list4.remove(max);
+        //System.out.println(list4);
+
+        list4.remove(Collections.max(list4));
+        System.out.println(list4);
     }
 }

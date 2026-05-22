@@ -1,12 +1,12 @@
-package exam_collction_list;
+package exam_collection_list;
 
 public class Movie {
     private String title;
-    private double rating;
+    private String rating;
     private String director;
-    private int releaseYear;
+    private String releaseYear;
 
-    public Movie(String title, double rating, String director, int releaseYear) {
+    public Movie(String title, String rating, String director, String releaseYear) {
         this.title = title;
         this.rating = rating;
         this.director = director;
@@ -21,11 +21,11 @@ public class Movie {
         this.title = title;
     }
 
-    public double getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
@@ -37,11 +37,11 @@ public class Movie {
         this.director = director;
     }
 
-    public int getReleaseYear() {
+    public String  getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
+    public void setReleaseYear(String releaseYear) {
         this.releaseYear = releaseYear;
     }
 
