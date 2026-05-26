@@ -1,4 +1,4 @@
-package exam_collection_list;
+package exam_map;
 
 import java.util.HashMap;
 import java.util.Iterator;
