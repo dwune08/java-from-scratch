@@ -1,7 +1,7 @@
 package exam_try_with_resources;
 
-import java. io.FileReader;
-import java. io. IOException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class TryWithResourceExample2 {
     public static void main(String[] args) {
