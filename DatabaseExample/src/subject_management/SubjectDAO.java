@@ -1,45 +1,24 @@
 package subject_management;
 
-import academic_database.DBConnectionUtil;
-import java.sql.*;
+import java.sql.Connection;
+import java. sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql. SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util. List;
 
-import static academic_database.DBConnectionUtil.getConnection;
+import static academic_database.DBConnectionUtil .*;
 
 public class SubjectDAO {
     private static final SubjectDAO instance = new SubjectDAO();
+    // 싱글톤 패턴
     public static SubjectDAO getInstance() {
         return instance;
     }
+
     private SubjectDAO() {}
 
-
-    static Scanner input = new Scanner(System.in);
-
-    private static void create () throws ClassNotFoundException, SQLException, IllegalArgumentException {
-
-        System.out.print("추가할 학과명 입력: ");
-        String sName = input.nextLine();
-
-        String sql = """
-            INSERT INTO subject (s_name)
-            VALUES (?)
-        """;
-
-        try (
-                Connection conn = getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql)
-        ) {
-            pstmt.setString(1, sName);
-
-            int insertCount = pstmt.executeUpdate();
-
-            System.out.println(insertCount == 1 ? "레코드 추가 성공" : "레코드 추가 실패");
-            System.out.println();
-        }
-    }
+    // 메서드를 하나씩 작성하면 된다.
 
     private SubjectDTO addSubject(ResultSet rs) throws SQLException {
         SubjectDTO subjectDTO = new SubjectDTO();
@@ -48,47 +27,112 @@ public class SubjectDAO {
         subjectDTO.setSubjectName(rs.getString("s_name"));
         return subjectDTO;
     }
+
     public List<SubjectDTO> getAllSubjects() throws SQLException {
         List<SubjectDTO> list = new ArrayList<>();
         String sql = """
-        
                 SELECT no, s_num, s_name FROM subject
-        ORDER BY no
+                ORDER BY no
         """;
         try (
-                    Connection conn = getConnection();
-                    PreparedStatement pstmt = conn.prepareStatement(sql);
-                    ResultSet rs= pstmt. executeQuery()
+                Connection conn = getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                ResultSet rs= pstmt.executeQuery()
         ) {
             while (rs.next()) {
                 list.add(addSubject(rs));
             }
         }
         return list;
-        }
-
-    private static void update() throws ClassNotFoundException, SQLException, IllegalArgumentException{
-
     }
 
-    private static void delete() throws ClassNotFoundException, SQLException, IllegalArgumentException{
-        System.out.print("삭제할 학과번호 입력: ");
-        int sNum = Integer.parseInt(input.nextLine());
-
+    public boolean subjectInsert(SubjectDTO subjectDTO) throws SQLException {
         String sql = """
-            DELETE FROM subject
-            WHERE s_num = ?
+                INSERT INTO subject(s_name)
+                VALUES(?)
+                """;
+        try (
+                Connection conn = getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+        ) {
+            pstmt.setString(1, subjectDTO.getSubjectName());
+
+            return pstmt.executeUpdate() == 1;
+        }
+    }
+
+
+    public int studentDataCheck(SubjectDTO subjectDTO) throws SQLException {
+        String sql = """
+                SELECT COUNT (*)
+                FROM student
+                WHERE s_num = ?
         """;
+
         try (
                 Connection conn = getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)
         ) {
-            pstmt.setInt(1,sNum);
+            pstmt.setString(1, subjectDTO.getSubjectNumber());
 
-            int deleteCount = pstmt.executeUpdate();
-
-            System.out.println(deleteCount == 1 ? "레코드 삭제 성공" : "해당 책번호가 존재하지 않습니다.");
-            System.out.println();
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
         }
+        return 0;
+    }
+
+    public boolean subjectDelete(SubjectDTO subjectDTO) throws SQLException {
+        String sql = """
+                DELETE subject
+                WHERE s_num = ?
+                """;
+        try (
+                Connection conn = getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+        ) {
+            pstmt.setString(1, subjectDTO.getSubjectNumber());
+
+            return pstmt.executeUpdate() == 1;
+        }
+    }
+
+    public boolean subjectUpdate(SubjectDTO subjectDTO) throws SQLException {
+        String sql = """
+                UPDATE subject
+                SET s_name = ?
+                WHERE s_num = ?
+                """;
+        try (
+                Connection conn = getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+        ) {
+            pstmt.setString(1, subjectDTO.getSubjectName());
+            pstmt.setString(2, subjectDTO.getSubjectNumber());
+
+            return pstmt.executeUpdate() == 1;
+        }
+    }
+
+    public List<SubjectDTO> getSearch(SubjectDTO subjectDTO) throws SQLException {
+        List<SubjectDTO> list = new ArrayList<>();
+        String sql = """
+                SELECT no, s_num, s_name FROM subject
+                WHERE s_name = ?
+        """;
+        try (
+                Connection conn = getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        ) {
+            pstmt.setString(1, subjectDTO.getSubjectName());
+            ResultSet rs= pstmt.executeQuery();
+            while (rs.next()) {
+                list.add(addSubject(rs));
+            }
+        }
+        return list;
     }
 }
